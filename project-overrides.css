@@ -310,8 +310,6 @@ body:has(.project-dialog[open]){overflow:hidden}
   .case-shot::after{font-size:.4rem}
 }
 
-@media(min-width:801px){.contact-title.reveal.visible{transform:translateY(-2cm)}}
-
 /* Portfolio category filters */
 .project-filters{display:flex;align-items:center;gap:.7rem;margin-bottom:-3.7rem}
 .project-filters button{min-width:132px;padding:.72rem 1.15rem;border:1px solid rgba(15,57,140,.48);border-radius:999px;background:transparent;color:var(--blue);font:500 .55rem/1 var(--sans);letter-spacing:.11em;cursor:pointer;transition:color .28s ease,background .28s ease,border-color .28s ease,transform .28s ease,box-shadow .28s ease}
