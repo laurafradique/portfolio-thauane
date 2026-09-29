@@ -8,6 +8,18 @@ const menu = document.querySelector('.menu');
 if (menu) menu.addEventListener('click', () => { const open = header.classList.toggle('open'); menu.setAttribute('aria-expanded', String(open)); menu.setAttribute('aria-label', open ? 'Fechar menu' : 'Abrir menu'); });
 document.querySelectorAll('.site-header nav a').forEach((link) => link.addEventListener('click', () => { header.classList.remove('open'); menu?.setAttribute('aria-expanded', 'false'); }));
 
+const filterButtons = document.querySelectorAll('.project-filters button');
+const projectCases = document.querySelectorAll('.project-case[data-category]');
+filterButtons.forEach((button) => button.addEventListener('click', () => {
+  const wasActive = button.getAttribute('aria-pressed') === 'true';
+  filterButtons.forEach((item) => item.setAttribute('aria-pressed', 'false'));
+  const activeFilter = wasActive ? null : button.dataset.filter;
+  if (activeFilter) button.setAttribute('aria-pressed', 'true');
+  projectCases.forEach((project) => {
+    project.hidden = Boolean(activeFilter && project.dataset.category !== activeFilter);
+  });
+}));
+
 const projectData = {
   lab: { title: 'Lab Burger', category: 'Branding · Identidade visual', images: ['capa.png','imagem-2.png','imagem-3.png','imagem-4.png','imagem-5.png','imagem-6.png'].map(name => `assets/projects/lab-burger/${name}`), pdf: 'assets/projects/lab-burger/complementar.pdf' },
   closet: { title: 'In Closet', category: 'Branding · UI design', images: ['capa.png','imagem-2.png','imagem-3.png','imagem-4.png','imagem-5.png'].map(name => `assets/projects/in-closet/${name}`) },
